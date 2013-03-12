@@ -25,7 +25,7 @@ class PNRClass:
       self.pnr["To"] = journeyDetails[4].text
       self.pnr["ReservedUpto"] = journeyDetails[5].text
       self.pnr["BoardingPoint"] = journeyDetails[6].text
-      self.pnr["class"] = journeyDetails[7].text
+      self.pnr["Class"] = journeyDetails[7].text
    
    def getPassengerDetails(self, data):
       # this is actual passenger information
