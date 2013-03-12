@@ -9,7 +9,10 @@ class PNRClass:
 
    def __init__(self):
       self.pnr = {}
-      self.pnr["Status"] = {"code": 0, "message": "None"}
+      self.pnr["Status"] = {
+                            "code": RESPONSE_CODE_SUCCESS,
+                            "message": RESPONSE_MESSAGE_SUCCESS
+                           }
 
    def getJourneyDetails(self, data):
       trElements = data.getchildren()
