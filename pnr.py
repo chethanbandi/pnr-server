@@ -1,9 +1,3 @@
-# TODO
-# handle no internet connection exception
-# handle internet timeout exception
-# handle html parse exception
-# D0 PNR validations number, length etc
-
 from lxml import html
 import httplib, urllib
 

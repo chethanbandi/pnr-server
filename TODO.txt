@@ -1,0 +1,17 @@
+TODO
+
+* DONE - BUG: new request response contains previous request response
+* DONE - CHANGE: changed the request url from /v1/pnr/<value> to /pnr/v1/<value>
+
+* TODO - handle no internet connection exception
+* TODO - handle internet timeout exception
+* TODO - handle html parse exception
+* TODO - D0 PNR validations number, length etc
+
+
+Feature Request:
+
+* data selection (data=minimal)
+* retry flag in response
+* push notifications on change of pnr status ;) a big one ....
+
