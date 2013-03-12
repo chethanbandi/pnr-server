@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from pnr import PNRClass
 from constants import *
+from responsecodes import *
 
 app = Flask(__name__)
 
@@ -12,9 +13,8 @@ def queryPnr(pnrno):
 
 @app.errorhandler(404)
 def pageNotFound(error):
-	return jsonify({"Status": {"code" : STATUS_INVALID_RESOURCE, "message" : "Invalid resource uri"}})
+	return jsonify({"Status": {"code" : RESPONSE_CODE_INVALID_RESOURCE, "message" : RESPONSE_MESSAGE_INVALID_RESOURCE}})
 
 if __name__ == '__main__':
-	app.debug = False
-	app.run()
+	app.run(host="127.0.0.1", port=5000, debug=True)
 
