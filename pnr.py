@@ -75,17 +75,21 @@ class PNRClass:
    
    
    def parseHtml(self, result):
-      root = html.fromstring(result)
-      #root = html.parse("pnr_result.html")
-      #root = html.parse("pnr_fail.html")
-      successXpath = "//td[@class='Enq_heading' and @colspan='4' and @align='center' and @valign='top']"
-      
-      
-      enqHeading = root.xpath(successXpath)
-      if len(enqHeading) == 1:
-        self.parseSuccess(root)
-      else:
-        self.parseFailure(root)
+      try:
+         root = html.fromstring(result)
+         #root = html.parse("pnr_result.html")
+         #root = html.parse("pnr_fail.html")
+         successXpath = "//td[@class='Enq_heading' and @colspan='4' and @align='center' and @valign='top']"
+
+         enqHeading = root.xpath(successXpath)
+         if len(enqHeading) == 1:
+           self.parseSuccess(root)
+         else:
+           self.parseFailure(root)
+      except:
+         self.pnr["Status"]["message"] = RESPONSE_MESSAGE_PARSE_ERROR
+         self.pnr["Status"]["code"] = RESPONSE_CODE_PARSE_ERROR
+         return
    
    def queryWeb(self, pnrNumber):
      return_object = {}
