@@ -2,6 +2,7 @@ from lxml import html
 import httplib, urllib
 
 from constants import *
+from responsecodes import *
 
 class PNRClass:
    pnr = {}
@@ -58,14 +59,14 @@ class PNRClass:
      if len(e) == 1:
        if e[0].text == serverErrorString:
          self.pnr["Status"]["message"] = serverErrorString
-         self.pnr["Status"]["code"] = STATUS_FAIL
+         self.pnr["Status"]["code"] = RESPONSE_CODE_GENERAL_ERROR
          return
      
      e = root.xpath(failureXpath)
      p = e[0].getparent().getparent().getparent()
      c = p.getchildren()
      
-     self.pnr["Status"]["code"] = STATUS_FAIL
+     self.pnr["Status"]["code"] = RESPONSE_CODE_GENERAL_ERROR
      self.pnr["Status"]["message"] = c[2].text
    
    
@@ -96,14 +97,12 @@ class PNRClass:
                 "Connection": "keep-alive",
                 "Referer": "http://www.indianrail.gov.in/pnr_stat.html",
                 "Accept": "text/plain"}
-     host = 'www.indianrail.gov.in'
-     path = '/cgi_bin/inet_pnrstat_cgi.cgi'
-     conn = httplib.HTTPConnection(host,80,timeout=500)
+     conn = httplib.HTTPConnection(INDIANRAIL_WEB_URL,80,timeout=INDIANRAIL_WEB_TIMEOUT)
      return_object = {}
      return_object['status'] = 'OK'
      return_object['data'] = {}
      try :
-       conn.request("POST", path, params, headers)
+       conn.request("POST", INDIANRAIL_WEB_URL_PATH, params, headers)
        response = conn.getresponse()
        data = response.read()
        conn.close()
