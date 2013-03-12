@@ -1,4 +1,4 @@
-create table PNR_STATS
+create table IF NOT EXISTS PNR_STATS
 (
 	id serial,
 	pnr bigint,

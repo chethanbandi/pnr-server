@@ -3,7 +3,6 @@ import httplib, urllib
 
 from constants import *
 from responsecodes import *
-from models.pnrstats import *
 
 class PNRClass:
    pnr = {}
@@ -119,7 +118,6 @@ class PNRClass:
        pass
    
    def queryPnr(self, pnrno):
-     save(pnrno)
      self.pnr["PNR"] = pnrno
      result = self.queryWeb(pnrno)
      self.parseHtml(result)
