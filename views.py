@@ -4,7 +4,7 @@ from constants import *
 
 app = Flask(__name__)
 
-@app.route('/v1/pnr/<int:pnrno>', methods=['GET'])
+@app.route('/pnr/v1/<int:pnrno>', methods=['GET'])
 def queryPnr(pnrno):
 	pnrobject = PNRClass()
 	result = pnrobject.queryPnr(pnrno)
