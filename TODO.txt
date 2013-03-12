@@ -3,6 +3,7 @@ TODO
 * DONE - BUG: new request response contains previous request response
 * DONE - CHANGE: changed the request url from /v1/pnr/<value> to /pnr/v1/<value>
 
+* TODO - log each request to server pnr, date, ip address etc
 * TODO - handle no internet connection exception
 * TODO - handle internet timeout exception
 * TODO - handle html parse exception
