@@ -13,6 +13,7 @@ class PNRClass:
    pnr = {}
 
    def __init__(self):
+      self.pnr = {}
       self.pnr["Status"] = {"code": 0, "message": "None"}
 
    def getJourneyDetails(self, data):
